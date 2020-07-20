@@ -43,4 +43,11 @@ public class ProductController {
 		return productServiceImpl.ListarProductos(product) ;
 	}
 	
+	@GetMapping(value="/list/{id}")
+	public void BuscarPorId(@PathVariable Long id ) {
+		 productServiceImpl.FindProductoById(id);
+		
+	}
+	
+	
 }

@@ -11,7 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -62,7 +62,9 @@ public class Product implements Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date creacion_prod;
 	
+	@Column(name="producto_status")
 	
+	private String status;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="id_catergoria")
