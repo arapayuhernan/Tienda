@@ -42,7 +42,7 @@ public class ProductServiceImpl implements IProductService {
 	@Override
 	public Product UpdateProducto(Product product) {
 		
-		Product productonuevo = productdao.findById(product.getId_producto()).orElse(null);
+		Product productonuevo = FindProductoById(product.getId_producto());
 		if (productonuevo==null) {
 			return null;
 		}
@@ -50,6 +50,7 @@ public class ProductServiceImpl implements IProductService {
 		productonuevo.setPrice(product.getPrice());
 		productonuevo.setCategory(product.getCategory());
 		productonuevo.setStock(product.getStock());
+		productonuevo.setDescripcion(product.getDescripcion());
 		
 		
 		
