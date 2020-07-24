@@ -9,7 +9,9 @@ import com.hernan.ProductService.Model.Entity.Product;
 
 public interface IProductDao extends JpaRepository<Product,Long> {
 
-	public List<Product> ListProductByCategory(Category category);
+	
+	//hay que fijarse como se escribe por la notacion del find
+	public List<Product> findByCategory(Category category);
 	
 	
 }

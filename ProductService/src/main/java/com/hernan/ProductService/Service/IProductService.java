@@ -12,17 +12,14 @@ public interface IProductService {
 	
 	public Product UpdateProducto(Product product);
 	
-	
+	public List<Product> ProductosPorCategoria(Category category);
 	
 	public void FindProductoById(Long id);
 	
 	
+	public List<Product> ListarProductos();
 	
-	public List<Product> ListProductByCategory(Category category);
-	
-	public List<Product> ListarProductos(Product product);
-	
-	public void EliminarProducto(Long id);
+	public Product EliminarProducto(Long id);
 	
 	
 	

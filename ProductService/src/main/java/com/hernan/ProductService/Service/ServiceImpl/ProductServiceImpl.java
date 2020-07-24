@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 
@@ -21,12 +22,22 @@ public class ProductServiceImpl implements IProductService {
 	private IProductDao productdao;
 	
 	
+	
+	
+	
+	
+	
+	
 	@Override
 	public Product crearProducto(Product product) {
 		product.setStatus("CREADO");
 		product.setCreacion_prod(new Date());
 		return productdao.save(product);
 	}
+	
+	
+	
+	
 
 	@Override
 	public Product UpdateProducto(Product product) {
@@ -49,34 +60,45 @@ public class ProductServiceImpl implements IProductService {
 
 	
 
-	//@Override
-	//public void FindProductByCategory(Product product) {
-		
-	//}
+	
 
 	@Override
-	public List<Product> ListarProductos(Product product) {
-		
-			List<Product> listaProductoList = productdao.findAll();
-		return listaProductoList;
+	public List<Product> ListarProductos() {
+		List<Product> listaProducto = productdao.findAll();
+		return listaProducto;
+			
 	}
 
 	@Override
-	public void EliminarProducto(Long id) {
-		 productdao.deleteById(id);
+	public Product EliminarProducto(Long id) {
+		Product productdb = productdao.findById(id).orElse(null);
+		if(null==productdb) {
+			return null;
+		}
+		
+		
+		productdb.setStatus("DELETED");
+		return productdao.save(productdb);
+		 
 		
 	}
 
-	@Override
-	public List<Product> ListProductByCategory(Category category) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public void FindProductoById(Long id) {
-		productdao.findById(id);
+		productdao.findById(id).orElse(null);
 		
+	}
+
+
+
+
+
+	@Override
+	public List<Product> ProductosPorCategoria(Category category) {
+		// TODO Auto-generated method stub
+		return productdao.findByCategory(category);
 	}
 
 	
