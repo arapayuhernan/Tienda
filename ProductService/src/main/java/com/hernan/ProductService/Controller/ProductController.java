@@ -59,9 +59,13 @@ public class ProductController {
 	}
 	
 	@GetMapping(value="/list/{id}")
-	public void BuscarPorId(@PathVariable Long id ) {
-		 productServiceImpl.FindProductoById(id);
+	public ResponseEntity<Product> BuscarPorId(@PathVariable(name="id") Long id ) {
+		 Product productdb = productServiceImpl.FindProductoById(id);
+		 if(productdb==null) {
+			 return ResponseEntity.notFound().build();
+		 }
 		
+		 return ResponseEntity.ok(productdb);
 	}
 	
 	

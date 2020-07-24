@@ -14,7 +14,7 @@ public interface IProductService {
 	
 	public List<Product> ProductosPorCategoria(Category category);
 	
-	public void FindProductoById(Long id);
+	public Product FindProductoById(Long id);
 	
 	
 	public List<Product> ListarProductos();

@@ -86,8 +86,8 @@ public class ProductServiceImpl implements IProductService {
 	
 
 	@Override
-	public void FindProductoById(Long id) {
-		productdao.findById(id).orElse(null);
+	public Product FindProductoById(Long id) {
+		return productdao.findById(id).orElse(null);
 		
 	}
 
